@@ -34,7 +34,7 @@ var questions = [{
 function start(){
     console.log('game started');
     timeLeft = 60;
-    document.getElementById('timeLeft').innerHTML = timeLeft;
+    
 
     timer = setInterval(function(){
         timeLeft--;
@@ -42,6 +42,7 @@ function start(){
             clearInterval(timer);
             end(); 
         }
+        document.getElementById('timeLeft').innerHTML = timeLeft;
     },1000);
 
     nextQuestion();
@@ -50,9 +51,11 @@ function start(){
 function end(){
     clearInterval(timer);
     var quiz = `
-    <h1>Game Over</h1>
-    <h2>Your score is: </h2>`+ score + `<input type = 'text' id= 'name' placeholder = 'Enter your name'
-    <button onclick 'setScore()'>Finish</button>`;
+    <h2>Game over!</h2>
+    <h3>You got a ` + score +  ` /5!</h3>
+    <h3>Enter your name to save your score of: ` + score  +  `!</h3>
+    <input type="text" id="name" placeholder="First name"> 
+    <button onclick="setScore()">Set score!</button>`;
     document.getElementById('quiz').innerHTML = quiz;
 }
 
@@ -68,7 +71,7 @@ function getScore(){
     var quiz = `<h2>` + localStorage.getItem('highscoreName') + `'s high score is:</h2>
     <h1>` + localStorage.getItem('highscore') + `</h1><br> 
     
-    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>`;
+    <button onclick="clearScore()">Clear score!</button><button onclick="reset()">Play Again!</button>`;
     document.getElementById('quiz').innerHTML = quiz;
 }
 
@@ -102,7 +105,7 @@ function correct(){
     nextQuestion();
 }
 
-// Lops through the questions
+// Loops through the questions
 function nextQuestion(){
     currentQuestion++;
     if(currentQuestion > questions.length -1){
@@ -116,13 +119,15 @@ function nextQuestion(){
         var userAnswer = "<button onclick=\"[ans]\">[choice]</button>";
         userAnswer = userAnswer.replace('[choice]',questions[currentQuestion].options[i]);
         if(questions[currentQuestion].options[i] == questions[currentQuestion].answer){
-            userAnswer = userAnswer.replace('[ans]', correct());
+            userAnswer = userAnswer.replace('[ans]', 'correct()');
         }else{
-            userAnswer = userAnswer.replace('[ans]', incorrect());
+            userAnswer = userAnswer.replace('[ans]', 'incorrect()');
         }
         quiz += userAnswer;
     }
     document.getElementById('quiz').innerHTML = quiz;
 }
 
+// Adds event listners to start the game, or view high scores.
 document.getElementById('startBtn').addEventListener('click', start);
+document.getElementById('highScores').addEventListener('click',getScore);

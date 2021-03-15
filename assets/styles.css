@@ -1,17 +1,17 @@
 
-
+/* Styles for the nav bar */
 nav{
     display: flex;
     border: 2px solid turquoise;
     border-radius: 4px;
 }
-
+/* Styles for the high scores */
 #highScores{
     display: flex;
     width: 50%;
    
 }
-
+/* Styles for the timer */
 #time{
     display: flex;
     width: 50%;
@@ -19,12 +19,14 @@ nav{
    padding-right: 23px;
 }
 
+/* Styles for where the quiz will be */
 #quiz{
     text-align: center;
     padding-top: 10%;
    
 }
 
+/* Styles for the buttons */
 button{
     background-color: turquoise;
     border-radius: 4px;
@@ -40,4 +42,10 @@ button{
 
 button:hover{
     background-color: teal;
+}
+
+/* Styles links */
+a{
+    text-decoration: none;
+    color: black;
 }
