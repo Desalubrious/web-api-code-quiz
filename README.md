@@ -1,4 +1,4 @@
-## web-api-code-quiz
+# web-api-code-quiz
 # Deployed at: https://desalubrious.github.io/web-api-code-quiz/
 
 # Objective
@@ -29,3 +29,4 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 # Documentation:
+![Gif of app working](https://github.com/Desalubrious/web-api-code-quiz/blob/main/assets/demogif.gif?raw=true)
